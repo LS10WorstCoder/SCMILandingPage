@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Founders — SCMI</title>
     <link rel="icon" href="/assets/logo.svg" />
-    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
   <style>
       html, body { height: 100vh; overflow: hidden; }
       .founders-main {
@@ -145,6 +145,8 @@
         justify-content: center;
         max-height: 100%;
       }
+      /* Override global .card-content overflow to remove internal scrollbars on founders page */
+      .founder-card-content { overflow: visible !important; }
       .founder-img {
         width: 90px;
         height: 90px;
