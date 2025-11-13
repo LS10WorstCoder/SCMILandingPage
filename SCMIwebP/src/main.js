@@ -1,0 +1,99 @@
+// Flip Card Handler
+const flipCard = document.getElementById('flip-card');
+const flipButton = document.querySelector('.flip-button');
+const flipButtonBack = document.querySelector('.flip-button-back');
+flipButton.addEventListener('click', () => {
+  flipCard.classList.add('flipped');
+});
+
+flipButtonBack.addEventListener('click', () => {
+  flipCard.classList.remove('flipped');
+});
+
+// RSVP Form handler
+const rsvpForm = document.getElementById('rsvp-form');
+const rsvpMsg = rsvpForm.querySelector('#form-msg');
+
+function validateEmail(email) {
+  return /\S+@\S+\.\S+/.test(email);
+}
+
+rsvpForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(rsvpForm);
+  const data = {
+    firstName: formData.get('firstName')?.trim(),
+    lastName: formData.get('lastName')?.trim(),
+    email: formData.get('email')?.trim(),
+    levelOfStudy: formData.get('levelOfStudy'),
+    linkedin: formData.get('linkedin')?.trim(),
+    createdAt: new Date().toISOString()
+  };
+
+  // Validate required fields
+  if (!data.firstName || !data.lastName) {
+    rsvpMsg.textContent = 'First and last name are required.';
+    rsvpMsg.classList.add('error');
+    return;
+  }
+
+  if (!validateEmail(data.email)) {
+    rsvpMsg.textContent = 'Please enter a valid email address.';
+    rsvpMsg.classList.add('error');
+    return;
+  }
+
+  // Keep a local copy for convenience
+  try {
+    const rsvps = JSON.parse(localStorage.getItem('scmi_rsvps') || '[]');
+    rsvps.push(data);
+    localStorage.setItem('scmi_rsvps', JSON.stringify(rsvps));
+  } catch (err) {
+    // ignore storage errors
+    console.warn('Could not save RSVP locally', err);
+  }
+
+  // Send to server endpoint which will call Resend API and forward to genFaq@scmi.club
+  try {
+    const resp = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (!resp.ok) {
+      const body = await resp.json().catch(() => ({}));
+      rsvpMsg.textContent = body?.error || 'There was an error sending your RSVP. Please try again later.';
+      rsvpMsg.classList.add('error');
+      return;
+    }
+
+    rsvpMsg.textContent = 'Thank you for your RSVP! We\'ll be in touch soon.';
+    rsvpMsg.classList.remove('error');
+    rsvpForm.reset();
+
+    // Auto-flip back after 2 seconds
+    setTimeout(() => {
+      flipCard.classList.remove('flipped');
+    }, 2000);
+  } catch (err) {
+    console.error('Submit error', err);
+    rsvpMsg.textContent = 'Could not send RSVP — please check your network connection and try again.';
+    rsvpMsg.classList.add('error');
+  }
+});
+
+// Small enhancements
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Keyboard focus-visible for better accessibility
+(function () {
+  function handleFirstTab(e) {
+    if (e.key === 'Tab') {
+      document.body.classList.add('user-is-tabbing');
+      window.removeEventListener('keydown', handleFirstTab);
+    }
+  }
+  window.addEventListener('keydown', handleFirstTab);
+})();

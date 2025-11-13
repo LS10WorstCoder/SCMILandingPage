@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SCMI — Society for Mathematical &amp; Computational Inquiry" />
+    <title>SCMI — Society for Mathematical &amp; Computational Inquiry</title>
+    <link rel="icon" href="/assets/logo.svg" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+
+
+    <main>
+      <section class="hero" id="home">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin-top:-60px;">
+          <!-- Navigation Buttons -->
+          <nav class="header-nav" style="margin-bottom:2.5rem;">
+            <a href="/founders.html" class="nav-button">Founders</a>
+            <a href="/what-to-expect" class="nav-button">What to Expect</a>
+          </nav>
+          <div class="flip-card-container">
+            <div class="flip-card" id="flip-card">
+              <!-- Front of card: Hero -->
+              <div class="flip-card-front">
+                <div class="card-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="card-content">
+                  <img src="/assets/logo.svg" alt="SCMI logo" class="hero-logo" />
+                  <h1 class="hero-title">Society for Mathematical<br/>&amp; Computational Inquiry</h1>
+                  <div class="mission-placeholder">
+                    <p>
+                      Our mission is to build a community of curious thinkers who want to strengthen their mathematical reasoning and algorithmic problem-solving skills.
+                    </p>
+                  </div>
+                  <button class="flip-button" aria-label="Flip to see RSVP form">Join the Society →</button>
+                </div>
+              </div>
+
+              <!-- Back of card: RSVP Form -->
+              <div class="flip-card-back">
+                <div class="card-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="card-content">
+                  <form id="rsvp-form" novalidate>
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="firstName" placeholder="First Name" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="lastName" placeholder="Last Name" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="level-of-study">Level of Study</label>
+                        <select id="level-of-study" name="levelOfStudy" required>
+                          <option value="">Select Level of Study</option>
+                          <option value="freshman">Freshman</option>
+                          <option value="sophomore">Sophomore</option>
+                          <option value="junior">Junior</option>
+                          <option value="senior">Senior</option>
+                          <option value="graduate">Graduate</option>
+                        </select>
+                      </div>
+                      <div class="form-group full-width">
+                        <label for="linkedin">LinkedIn URL</label>
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+                      </div>
+                    </div>
+                    <p id="form-msg" class="form-msg" aria-live="polite"></p>
+                    <div class="form-actions">
+                      <button type="submit" class="button primary">Submit</button>
+                      <button type="button" class="flip-button-back" aria-label="Flip back to home">Back</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+
+  <script type="module" src="/src/matrixRain.js"></script>
+  <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

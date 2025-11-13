@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style>
+  .scmi-text { font-family: 'Georgia', 'Times New Roman', serif; font-weight: bold; fill: #fff; }
+    </style>
+  </defs>
+  
+  <!-- Dollar Sign -->
+  <text x="30" y="85" class="scmi-text" font-size="70">$</text>
+  
+  <!-- Tilde (wave) -->
+  <text x="95" y="75" class="scmi-text" font-size="55">~</text>
+  
+  <!-- CMI text -->
+  <text x="150" y="85" class="scmi-text" font-size="70">CMI</text>
+</svg>

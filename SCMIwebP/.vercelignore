@@ -1,0 +1,10 @@
+# Vercel Node.js/Next.js API routes and static site deployment
+.env.local
+.env
+node_modules
+.vercel
+.DS_Store
+npm-debug.log
+build
+output
+server.js
