@@ -7,16 +7,20 @@
     <link rel="icon" href="/assets/logo.svg" />
     <link rel="stylesheet" href="/styles.css" />
   <style>
-      html, body { height: 100vh; overflow: hidden; }
+      html, body { 
+        min-height: 100vh; 
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
       .founders-main {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         z-index: 1;
         position: relative;
-  /* margin-top removed, restoring original position */
+        padding: 2rem 1rem;
       }
       .founders-pyramid {
         display: flex;
@@ -47,22 +51,117 @@
         width: 340px;
         height: 490px;
       }
+      
+      /* Tablet breakpoint */
       @media (max-width: 1200px) {
         .founders-row-top .founder-flip-card,
         .founders-row-bottom .founder-flip-card {
-          width: 260px;
-          height: 380px;
+          width: 280px;
+          height: 400px;
         }
-        .founders-row { gap: 2.2rem; }
+        .founders-row { gap: 2.5rem; }
+        .founders-pyramid { gap: 2.5rem; }
       }
+      
       @media (max-width: 900px) {
-        .founders-pyramid { max-width: 98vw; }
-        .founders-row { gap: 1.2rem; }
+        html, body { 
+          height: auto; 
+          overflow: auto; 
+        }
+        .founders-main {
+          height: auto;
+          min-height: 100vh;
+          padding: 2rem 1rem;
+        }
+        .founders-pyramid { 
+          max-width: 98vw;
+          gap: 2rem;
+        }
+        .founders-row { gap: 1.5rem; }
+        .founders-row-top .founder-flip-card,
+        .founders-row-bottom .founder-flip-card {
+          width: 240px;
+          height: 360px;
+        }
       }
-      @media (max-width: 700px) {
-        .founders-row { flex-direction: column; gap: 1.2rem; }
-        .founders-row-top, .founders-row-bottom { margin: 0; }
+      
+      /* Mobile landscape and small tablets */
+      @media (max-width: 768px) {
+        .founders-main {
+          padding: 1.5rem 0.75rem;
+        }
+        .founders-row { 
+          flex-direction: column; 
+          gap: 1.5rem;
+          align-items: center;
+        }
+        .founders-row-top, .founders-row-bottom { 
+          margin: 0; 
+        }
+        .founders-pyramid {
+          gap: 1.5rem;
+        }
+        .founders-row-top .founder-flip-card,
+        .founders-row-bottom .founder-flip-card {
+          width: 320px;
+          height: 450px;
+          max-width: 90vw;
+        }
       }
+      
+      /* Mobile portrait */
+      @media (max-width: 480px) {
+        .founders-main {
+          padding: 1rem 0.5rem;
+        }
+        .founders-row-top .founder-flip-card,
+        .founders-row-bottom .founder-flip-card {
+          width: 280px;
+          height: 400px;
+          max-width: 85vw;
+        }
+        .founder-name {
+          font-size: 1.1rem;
+        }
+        .founder-major {
+          font-size: 0.95rem;
+        }
+        .founder-img {
+          width: 75px;
+          height: 75px;
+        }
+        .neon-back-btn {
+          font-size: 0.9rem;
+          padding: 0.65rem 1.25rem;
+          min-width: 100px;
+        }
+      }
+      
+      /* Very small phones */
+      @media (max-width: 360px) {
+        .founders-row-top .founder-flip-card,
+        .founders-row-bottom .founder-flip-card {
+          width: 260px;
+          height: 370px;
+          max-width: 90vw;
+        }
+        .founder-name {
+          font-size: 1rem;
+        }
+        .founder-major {
+          font-size: 0.9rem;
+        }
+        .founder-img {
+          width: 65px;
+          height: 65px;
+        }
+        .neon-back-btn {
+          font-size: 0.8rem;
+          padding: 0.6rem 1rem;
+          min-width: 90px;
+        }
+      }
+      
       .founders-title {
         color: var(--neon-green);
         font-size: 2.2rem;
@@ -73,6 +172,21 @@
         letter-spacing: 2px;
         text-align: center;
       }
+      
+      @media (max-width: 768px) {
+        .founders-title {
+          font-size: 1.75rem;
+          margin-bottom: 1.5rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .founders-title {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+      }
+      
       .founders-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -197,6 +311,28 @@
         font-size: 1.1rem;
         text-align: center;
         padding: 2rem 1.2rem;
+      }
+      
+      @media (max-width: 768px) {
+        .founder-card-content {
+          padding: 1.5rem 1rem;
+          gap: 0.9rem;
+        }
+        .founder-card-back {
+          padding: 1.5rem 1rem;
+          font-size: 1rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .founder-card-content {
+          padding: 1.2rem 0.8rem;
+          gap: 0.7rem;
+        }
+        .founder-card-back {
+          padding: 1.2rem 0.8rem;
+          font-size: 0.9rem;
+        }
       }
     </style>
   </head>
