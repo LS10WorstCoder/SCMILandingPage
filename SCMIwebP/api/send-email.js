@@ -1,6 +1,9 @@
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '.env.local' });
+// Load local env only during development; Vercel injects env in production
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config({ path: '.env.local' });
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -14,8 +17,11 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Server not configured for sending email' });
+  if (!apiKey || apiKey.trim() === '') {
+    return res.status(500).json({
+      error: 'Server not configured for sending email',
+      detail: 'Missing RESEND_API_KEY. In production, set it in Vercel → Project Settings → Environment Variables (Production) and redeploy. For local dev, add it to .env.local.'
+    });
   }
 
   const to = 'genFaq@scmi.club';
