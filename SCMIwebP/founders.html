@@ -52,6 +52,18 @@
         height: 490px;
       }
       
+      /* Home button positioning - default (desktop): absolute centered between cards */
+      .home-button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+      
       /* Tablet breakpoint */
       @media (max-width: 1200px) {
         .founders-row-top .founder-flip-card,
@@ -61,6 +73,17 @@
         }
         .founders-row { gap: 2.5rem; }
         .founders-pyramid { gap: 2.5rem; }
+        /* Keep button centered on tablets */
+        .home-button-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 10;
+        }
       }
       
       @media (max-width: 900px) {
@@ -82,6 +105,17 @@
         .founders-row-bottom .founder-flip-card {
           width: 240px;
           height: 360px;
+        }
+        /* Keep button centered on small tablets */
+        .home-button-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 10;
         }
       }
       
@@ -106,6 +140,17 @@
           width: 320px;
           height: 450px;
           max-width: 90vw;
+        }
+        /* MOBILE: Move Home button to top of page */
+        .founders-row-top {
+          display: flex;
+          flex-direction: column;
+        }
+        .home-button-wrapper {
+          position: static;
+          transform: none;
+          order: -1;
+          margin-bottom: 1.5rem;
         }
       }
       
@@ -341,6 +386,11 @@
 
       <div class="founders-pyramid">
         <div class="founders-row founders-row-top" style="position:relative;">
+          <!-- Home button: centered between cards on desktop, moved to top on mobile -->
+          <div class="home-button-wrapper">
+            <a href="/index.html" class="button neon-back-btn" style="min-width:120px;text-align:center;">Home</a>
+          </div>
+          
           <div class="founder-flip-card">
             <div class="founder-flip-inner">
               <div class="founder-card-front">
@@ -357,9 +407,6 @@
                 <div class="card-content founder-card-content" style="font-style:italic;font-size:0.95em;">I founded this club to give students a place to explore unique and challenging problems that go beyond what’s typically taught in math or computer science classes. I wanted to create a collaborative environment where tackling complex problems becomes more approachable through group learning and shared insight.</div>
               </div>
             </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;">
-            <a href="/index.html" class="button neon-back-btn" style="min-width:120px;text-align:center;">Back</a>
           </div>
           <div class="founder-flip-card">
             <div class="founder-flip-inner">
