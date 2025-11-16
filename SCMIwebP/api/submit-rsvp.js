@@ -20,6 +20,14 @@ export default async function handler(req, res) {
 
   const { firstName, lastName, email, levelOfStudy, linkedin, createdAt } = req.body || {};
 
+  // Log environment check
+  console.log('Environment check:', {
+    hasAccessKey: !!process.env.AWS_ACCESS_KEY_ID,
+    hasSecretKey: !!process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
+    tableName: process.env.DYNAMODB_TABLE_NAME
+  });
+
   // Validate required fields
   if (!email || !email.trim()) {
     return res.status(400).json({ error: 'Email is required' });
@@ -44,10 +52,14 @@ export default async function handler(req, res) {
       submittedAt: timestamp
     };
 
+    console.log('Attempting to save to DynamoDB:', { id, email, tableName: TABLE_NAME });
+
     await dynamoDB.send(new PutCommand({
       TableName: TABLE_NAME,
       Item: item
     }));
+
+    console.log('Successfully saved to DynamoDB:', id);
 
     return res.status(201).json({ 
       ok: true, 
@@ -56,9 +68,15 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error('Error storing RSVP:', err);
+    console.error('Error details:', {
+      name: err.name,
+      message: err.message,
+      code: err.code
+    });
     return res.status(500).json({ 
       error: 'Failed to store RSVP', 
-      detail: process.env.NODE_ENV === 'development' ? err.message : undefined 
+      detail: err.message,
+      errorName: err.name
     });
   }
 }
