@@ -12,6 +12,20 @@
         overflow-y: auto;
         overflow-x: hidden;
       }
+
+      /* Back button styling - matching what-to-expect page */
+      .back-button-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 2rem 0;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+      }
+
       .founders-main {
         min-height: 100vh;
         display: flex;
@@ -21,6 +35,7 @@
         z-index: 1;
         position: relative;
         padding: 2rem 1rem;
+        padding-top: 6rem; /* Space for back button */
       }
       .founders-pyramid {
         display: flex;
@@ -52,17 +67,7 @@
         height: 490px;
       }
       
-      /* Home button positioning - default (desktop): absolute centered between cards */
-      .home-button-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-      }
+      /* Home button positioning removed - now using back-button-wrapper */
       
       /* Tablet breakpoint */
       @media (max-width: 1200px) {
@@ -73,16 +78,9 @@
         }
         .founders-row { gap: 2.5rem; }
         .founders-pyramid { gap: 2.5rem; }
-        /* Keep button centered on tablets */
-        .home-button-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 10;
+        /* Keep button at top on tablets */
+        .back-button-wrapper {
+          padding: 1.5rem 1.5rem 0;
         }
       }
       
@@ -106,16 +104,9 @@
           width: 240px;
           height: 360px;
         }
-        /* Keep button centered on small tablets */
-        .home-button-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 10;
+        /* Keep button at top on small tablets */
+        .back-button-wrapper {
+          padding: 1.5rem 1rem 0;
         }
       }
       
@@ -123,6 +114,10 @@
       @media (max-width: 768px) {
         .founders-main {
           padding: 1.5rem 0.75rem;
+          padding-top: 5rem;
+        }
+        .back-button-wrapper {
+          padding: 1.5rem 1rem 0;
         }
         .founders-row { 
           flex-direction: column; 
@@ -141,23 +136,17 @@
           height: 450px;
           max-width: 90vw;
         }
-        /* MOBILE: Move Home button to top of page */
-        .founders-row-top {
-          display: flex;
-          flex-direction: column;
-        }
-        .home-button-wrapper {
-          position: static;
-          transform: none;
-          order: -1;
-          margin-bottom: 1.5rem;
-        }
+        /* Mobile: back button stays at top */
       }
       
       /* Mobile portrait */
       @media (max-width: 480px) {
         .founders-main {
           padding: 1rem 0.5rem;
+          padding-top: 4.5rem;
+        }
+        .back-button-wrapper {
+          padding: 1rem 0.75rem 0;
         }
         .founders-row-top .founder-flip-card,
         .founders-row-bottom .founder-flip-card {
@@ -382,14 +371,15 @@
     </style>
   </head>
   <body>
+    <!-- Back Button -->
+    <div class="back-button-wrapper">
+      <a href="/index.html" class="button neon-back-btn" style="min-width:120px;text-align:center;">Home</a>
+    </div>
+
     <div class="founders-main">
 
       <div class="founders-pyramid">
-        <div class="founders-row founders-row-top" style="position:relative;">
-          <!-- Home button: centered between cards on desktop, moved to top on mobile -->
-          <div class="home-button-wrapper">
-            <a href="/index.html" class="button neon-back-btn" style="min-width:120px;text-align:center;">Home</a>
-          </div>
+        <div class="founders-row founders-row-top">
           
           <div class="founder-flip-card">
             <div class="founder-flip-inner">
