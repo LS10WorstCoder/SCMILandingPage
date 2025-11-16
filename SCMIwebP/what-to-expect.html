@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="What to Expect — SCMI" />
+    <title>What to Expect — SCMI</title>
+    <link rel="icon" href="/assets/logo.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      /* Override overflow for what-to-expect page */
+      html, body {
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      /* Back button styling */
+      .back-button-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 2rem 0;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 8px;
+        color: #8b5cf6;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+        background: rgba(139, 92, 246, 0.2);
+        border-color: rgba(139, 92, 246, 0.5);
+        transform: translateX(-4px);
+      }
+
+      /* Content card styling */
+      .content-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 120px);
+        padding: 2rem;
+      }
+
+      .content-card {
+        width: 100%;
+        max-width: 800px;
+        background: rgba(17, 24, 39, 0.8);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+      }
+
+      .content-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      }
+
+      .card-dots {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .dot-red {
+        background: #ef4444;
+      }
+
+      .dot-yellow {
+        background: #f59e0b;
+      }
+
+      .dot-green {
+        background: #10b981;
+      }
+
+      .content-title {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+      }
+
+      .content-body {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+
+      .content-body p {
+        margin: 0 0 1.5rem;
+      }
+
+      .content-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .back-button-wrapper {
+          padding: 1.5rem 1rem 0;
+        }
+
+        .content-section {
+          padding: 1.5rem 1rem;
+          min-height: calc(100vh - 100px);
+        }
+
+        .content-card {
+          padding: 2rem 1.5rem;
+        }
+
+        .content-title {
+          font-size: 1.5rem;
+        }
+
+        .content-body {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .back-button-wrapper {
+          padding: 1rem 0.75rem 0;
+        }
+
+        .content-section {
+          padding: 1rem 0.75rem;
+        }
+
+        .content-card {
+          padding: 1.5rem 1.25rem;
+        }
+
+        .content-title {
+          font-size: 1.25rem;
+        }
+
+        .content-body {
+          font-size: 0.9375rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Back Button -->
+      <div class="back-button-wrapper">
+        <a href="/" class="back-button">
+          <span>←</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Content Section -->
+      <section class="content-section">
+        <div class="content-card">
+          <div class="content-card-header">
+            <div class="card-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <h1 class="content-title">What to Expect</h1>
+          </div>
+          <div class="content-body">
+            <p>
+              Join us for engaging weekly meetings where we explore challenging problems, share innovative solutions, and grow together as mathematicians and problem solvers. Whether you're interested in competitive mathematics, algorithmic thinking, or simply enjoy the beauty of mathematical reasoning, you'll find a welcoming community here.
+            </p>
+            <p>
+              Our sessions blend collaborative problem-solving with individual exploration, offering opportunities to work on competition-style problems, discuss elegant proofs, and learn from peers with diverse mathematical backgrounds. We welcome students at all levels—from those just discovering their passion for math to seasoned competitors preparing for national olympiads.
+            </p>
+            <p>
+              Beyond weekly meetings, members gain access to our resource library, participate in mock competitions, and have opportunities to attend mathematical conferences and workshops. We believe that mathematical inquiry thrives in a supportive environment where curiosity is celebrated and every question leads to deeper understanding.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/matrixRain.js"></script>
+  </body>
+</html>
