@@ -368,12 +368,70 @@
           font-size: 0.9rem;
         }
       }
+
+      /* External link button at bottom */
+      .external-link-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+        margin-top: 2rem;
+      }
+
+      .external-link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 2rem;
+        background: transparent;
+        border: 2px solid #00ff00;
+        border-radius: 0px;
+        color: #00ff00;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.2s;
+        font-family: 'Courier New', 'Monaco', monospace;
+        font-size: 1rem;
+      }
+
+      .external-link-btn:hover {
+        background: #00ff00;
+        color: #000000;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+      }
+
+      @media (max-width: 768px) {
+        .external-link-wrapper {
+          padding: 1.5rem 1rem;
+          margin-top: 1.5rem;
+        }
+        .external-link-btn {
+          font-size: 0.9rem;
+          padding: 0.65rem 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .external-link-wrapper {
+          padding: 1rem 0.75rem;
+          margin-top: 1rem;
+        }
+        .external-link-btn {
+          font-size: 0.85rem;
+          padding: 0.6rem 1.25rem;
+          letter-spacing: 1px;
+        }
+      }
     </style>
   </head>
   <body>
     <!-- Back Button -->
     <div class="back-button-wrapper">
-      <a href="/index.html" class="button neon-back-btn" style="min-width:120px;text-align:center;">Home</a>
+      <a href="/index.html" class="button neon-back-btn" style="min-width:120px;text-align:center;">
+        <span>←</span>
+        <span>Back to Home</span></a>
     </div>
 
     <div class="founders-main">
@@ -469,6 +527,14 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- External Link Button -->
+      <div class="external-link-wrapper">
+        <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="external-link-btn">
+          <span>Visit Our Site</span>
+          <span>→</span>
+        </a>
       </div>
     </div>
     <script type="module" src="/src/matrixRain.js"></script>
