@@ -129,6 +129,40 @@
         margin-bottom: 0;
       }
 
+      /* CTA Button styling */
+      .content-cta {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(0, 255, 0, 0.3);
+        display: flex;
+        justify-content: center;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 2rem;
+        background: #00ff00;
+        border: 2px solid #00ff00;
+        border-radius: 0px;
+        color: #000000;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.2s;
+        font-family: 'Courier New', 'Monaco', monospace;
+        font-size: 1rem;
+      }
+
+      .cta-button:hover {
+        background: transparent;
+        color: #00ff00;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+        transform: translateY(-2px);
+      }
+
       /* Mobile responsive */
       @media (max-width: 768px) {
         .back-button-wrapper {
@@ -150,6 +184,11 @@
 
         .content-body {
           font-size: 1rem;
+        }
+
+        .cta-button {
+          font-size: 0.9rem;
+          padding: 0.65rem 1.5rem;
         }
       }
 
@@ -173,6 +212,11 @@
         .content-body {
           font-size: 0.9375rem;
         }
+
+        .cta-button {
+          font-size: 0.85rem;
+          padding: 0.6rem 1.25rem;
+        }
       }
     </style>
   </head>
@@ -180,7 +224,7 @@
     <main>
       <!-- Back Button -->
       <div class="back-button-wrapper">
-        <a href="/" class="back-button">
+        <a href="/index.html" class="back-button">
           <span>←</span>
           <span>Back to Home</span>
         </a>
@@ -207,6 +251,12 @@
             <p>
               Beyond weekly meetings, members gain access to our resource library, participate in mock competitions, and have opportunities to attend mathematical conferences and workshops. We believe that mathematical inquiry thrives in a supportive environment where curiosity is celebrated and every question leads to deeper understanding.
             </p>
+          </div>
+          <div class="content-cta">
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="cta-button">
+              <span>Learn More</span>
+              <span>→</span>
+            </a>
           </div>
         </div>
       </section>
