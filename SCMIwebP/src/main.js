@@ -63,15 +63,13 @@ if (rsvpForm && rsvpMsg) {
       console.warn('Could not save RSVP locally', err);
     }
 
-    // Send to server endpoint which will call Resend API and forward to genFaq@scmi.club
-    try {
-      const resp = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (!resp.ok) {
+  // Send to server endpoint which will store in SQL database
+  try {
+    const resp = await fetch('/api/submit-rsvp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });      if (!resp.ok) {
         const body = await resp.json().catch(() => ({}));
         rsvpMsg.textContent = body?.error || 'There was an error sending your RSVP. Please try again later.';
         rsvpMsg.classList.add('error');
